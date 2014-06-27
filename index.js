@@ -7,7 +7,9 @@ function writeCorsHeaders(request, response){
 function corsRoute(callback) {
     return function(request, response){
         writeCorsHeaders(request, response);
-
+        if(request.method === 'OPTIONS'){
+        	return response.end();
+        }
         callback.apply(null, arguments);
     };
 }
