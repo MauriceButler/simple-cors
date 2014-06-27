@@ -45,3 +45,36 @@ test('result sets headers', function (t) {
 
     result(testRequest, testResponse);
 });
+
+
+test('result responds to OPTIONS request', function (t) {
+    t.plan(7);
+
+    var testRequestHeader = 'foo',
+        headersAdded = 0,
+        validHeaders = ['Access-Control-Allow-Origin', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Headers'],
+        validValues = ['*', 'GET,PUT,POST,DELETE,OPTIONS', testRequestHeader],
+        testRequest = {
+            method: 'OPTIONS',
+            headers: {
+                'access-control-request-headers' : testRequestHeader
+            }
+        },
+        testResponse = {
+            setHeader: function(header, value){
+                t.equal(header, validHeaders[headersAdded], '"' + header + '" header added.');
+                t.equal(value, validValues[headersAdded], '"' + value + '" value added.');
+                headersAdded++;
+            },
+            end: function(){
+                t.equal(headersAdded, 3, 'correct number of headers added');
+            }
+        },
+
+
+    result = corsRoute(function(request, response){
+        t.fail('should have called response.end');
+    });
+
+    result(testRequest, testResponse);
+});

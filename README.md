@@ -8,6 +8,8 @@ This module will add the following (very open CORS headers) to your response.
     Access-Control-Allow-Methods: 'GET,PUT,POST,DELETE,OPTIONS'
     Access-Control-Allow-Headers: request.headers['access-control-request-headers']
 
+and will respond with `200 OK` to any `OPTIONS` request
+
 #Install
 
     npm install simple-cors
@@ -16,6 +18,6 @@ This module will add the following (very open CORS headers) to your response.
 
     var corsRoute = require('simple-cors');
 
-    routes['/api/`path...`'] = corsRoute(function(request, response){
+    routes['/api/test'] = corsRoute(function(request, response){
         response.end('Hello CORS World!');
     });
