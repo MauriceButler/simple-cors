@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/MauriceButler/simple-cors",
   "devDependencies": {
-    "grape": "^0.1.10"
+    "tape": "^5.0.1"
   }
 }
