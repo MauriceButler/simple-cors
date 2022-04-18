@@ -1,6 +1,6 @@
 {
   "name": "simple-cors",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple module to add Cross-Origin Resource Sharing headers to your routes",
   "main": "index.js",
   "scripts": {
